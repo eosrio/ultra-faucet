@@ -1,0 +1,248 @@
+<div fxLayout="column" fxLayoutAlign="start stretch" style="height: 100%">
+  <mat-toolbar class="header-toolbar">
+    <mat-toolbar-row>
+      <div class="container-hr toolbar-container" fxLayout="row wrap" fxLayoutAlign="start stretch" style="width: 100%"
+           fxLayoutGap="10px">
+        <!--LOGO-->
+        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="1rem" class="logo-container">
+          <svg data-v-36ff24b4="" width="45" height="45" viewBox="0 0 45 45" fill="none"
+               xmlns="http://www.w3.org/2000/svg"
+               class="logotype-icon icon">
+            <path
+              d="M0 22.5C0 14.0885 0 9.88269 1.80866 6.75C2.99353 4.69774 4.69774 2.99353 6.75 1.80866C9.88269 0 14.0885 0 22.5 0C30.9115 0 35.1173 0 38.25 1.80866C40.3023 2.99353 42.0065 4.69774 43.1913 6.75C45 9.88269 45 14.0885 45 22.5C45 30.9115 45 35.1173 43.1913 38.25C42.0065 40.3023 40.3023 42.0065 38.25 43.1913C35.1173 45 30.9115 45 22.5 45C14.0885 45 9.88269 45 6.75 43.1913C4.69774 42.0065 2.99353 40.3023 1.80866 38.25C0 35.1173 0 30.9115 0 22.5Z"
+              fill="#fff"></path>
+            <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M11.9999 23.0153V14.55H16.1999V23.0813C16.2107 25.2345 16.8352 26.683 17.8685 27.6882C18.927 28.7069 20.3406 29.2962 22.4999 29.2962C24.6639 29.2962 26.0927 28.7043 27.1484 27.6881C28.1729 26.6914 28.7999 25.2274 28.7999 23.0153V14.55H32.9999V23.0153C32.9999 26.0542 32.0991 28.7012 30.0818 30.661C28.0941 32.5764 25.5357 33.45 22.4999 33.45C19.4597 33.45 16.9201 32.5738 14.9351 30.6609C12.9279 28.7111 12.0134 26.018 11.9999 23.0153ZM24.5999 22.8578V14.55H20.3999V22.8809C20.4034 23.6644 20.6116 24.1913 20.9561 24.557C21.3089 24.9274 21.7801 25.1417 22.4999 25.1417C23.2213 25.1417 23.6975 24.9265 24.0494 24.557C24.3909 24.1945 24.5999 23.6622 24.5999 22.8578Z"
+                  fill="#232026"></path>
+          </svg>
+          <svg data-v-59b17a5e="" data-v-36ff24b4="" width="171" height="25" viewBox="0 0 171 25" fill="none"
+               xmlns="http://www.w3.org/2000/svg" class="logotype-text text">
+            <path data-v-59b17a5e="" d="M41.2379 0H46.9259V19.5055H63.9898V24.7253H41.2379V0Z" fill="#fff"></path>
+            <path data-v-59b17a5e="" d="M68.2557 0H93.8517V5.21978H83.8977V24.7253H78.2097V5.21978H68.2557V0Z"
+                  fill="#fff"></path>
+            <path data-v-59b17a5e="" fill-rule="evenodd" clip-rule="evenodd"
+                  d="M128.864 2.4533C127.142 0.910714 124.661 0 121.605 0H106.65V24.7253H112.338V16.1415H121.709L126.629 24.7253H133.668L127.515 14.8022C129.979 13.3805 131.444 11.0453 131.444 8.24176C131.444 6.08516 130.58 3.98901 128.864 2.4533V2.4533ZM112.338 10.989V5.21978H121.481C123.148 5.21978 124.136 5.68956 124.713 6.22939C125.315 6.79121 125.602 7.54808 125.602 8.28983C125.602 9.00275 125.335 9.64011 124.784 10.103C124.235 10.5632 123.24 10.989 121.48 10.989H112.338Z"
+                  fill="#fff"></path>
+            <path data-v-59b17a5e=""
+                  d="M142.199 24.7253H148.243L156.419 6.86813L164.596 24.7253H170.639L159.263 0H153.575L142.199 24.7253Z"
+                  fill="#fff"></path>
+            <path data-v-59b17a5e=""
+                  d="M0 11.1978V0H5.68798V11.2843C5.7022 14.1332 6.54829 16.0495 7.94895 17.3791C9.3809 18.7253 11.2949 19.5055 14.22 19.5055C17.1493 19.5055 19.086 18.7225 20.5151 17.3777C21.903 16.0591 22.7519 14.1223 22.7519 11.1964V0H28.4399V11.1978C28.4399 15.217 27.2198 18.7184 24.4868 21.3104C21.7978 23.8462 18.3324 25 14.22 25C10.1033 25 6.66347 23.8407 3.97448 21.3104C1.25704 18.7321 0.0184859 15.1703 0 11.1978Z"
+                  fill="#fff"></path>
+          </svg>
+        </div>
+        <div class="testnet-label" fxFlexAlign="center">TESTNET</div>
+        <!--TABS-->
+        <div fxFlexAlign="end" fxFlexOffset.gt-xs="50px" class="tabs-container">
+          <mat-tab-group [(selectedIndex)]="selectedTab" (selectedIndexChange)="setItem($event)" id="menu-tabs">
+            <mat-tab>
+              <ng-template mat-tab-label>
+                <div>Account Creator</div>
+              </ng-template>
+            </mat-tab>
+            <mat-tab>
+              <ng-template mat-tab-label>
+                <div>Token Faucet</div>
+              </ng-template>
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <!--Account creator-->
+  <ng-container *ngIf="selectedTab === 0">
+    <div fxFlex="grow" fxLayout="column" fxLayoutAlign="center center">
+      <div class="page-container account-page">
+        <div class="custom-card animate account-card" fxFlex="100">
+
+          <!--create account-->
+          <div *ngIf="!accountSuccess" [ngClass]="{'animated-faster fadeInRight': accCreatorBack}" fxFlex="100">
+            <form [formGroup]="accountForm">
+              <div  fxLayout="column" fxLayoutAlign="start stretch" fxFlex="100">
+                <h1>Create Account</h1>
+                <div class="text-faded" fxFlexOffset="10px">Create your account in Ultra Testnet!</div>
+                <div class="text-faded" fxFlexOffset="-5px">Paste your public key below</div>
+                <mat-form-field appearance="outline" fxFlexOffset="25px">
+                  <mat-label>Owner Public Key</mat-label>
+                  <input matInput type="text" placeholder="Owner Public Key" formControlName="ownerPublic" (blur)="checkKey(accountForm.get('ownerPublic'))">
+                </mat-form-field>
+                <mat-form-field appearance="outline" fxFlexOffset="-5px">
+                  <mat-label>Active Public Key (optional)</mat-label>
+                  <input matInput type="text" placeholder="Active Public Key" formControlName="activePublic" (blur)="checkKey(accountForm.get('activePublic'))">
+                  <mat-hint class="text-faded">If you don't fill in your active public key, your owner and active keys
+                    will be the same
+                  </mat-hint>
+                </mat-form-field>
+
+
+                <div fxLayout.gt-xs="row" fxLayoutGap.gt-xs="30px" fxLayoutAlign.gt-xs="space-between end" fxFlexOffset="30px"
+                     fxLayout.lt-sm="column" fxLayoutGap.lt-sm="10px">
+                  <!--RECAPTCHA-->
+                  <div #captchaRef2 fxFlexAlign="start" ></div>
+                  <button mat-flat-button type="button" fxFlexOffset="10px" fxFlex="grow"
+                          [disabled]="accountForm.invalid || accountSending" (click)="createAcc()"
+                          class="text-uppercase" color="primary">
+                    <div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="center center">
+                      <div>CREATE ACCOUNT</div>
+                      <mat-spinner color="accent" diameter="17" *ngIf="accountSending"></mat-spinner>
+                    </div>
+                  </button>
+                </div>
+                <!--errors-->
+                <div *ngIf="recaptchaErr === 'e'" class="error-badge animated-faster fadeInDown">
+                  <fa-icon [icon]="icons.solid.circleExclamation"></fa-icon>
+                  reCAPTCHA connection error
+                </div>
+                <ng-container *ngIf="accountErr !== ''">
+                  <div *ngIf="accountErr === 'e'" class="error-badge animated-faster fadeInDown">
+                    <fa-icon [icon]="icons.solid.circleExclamation"></fa-icon>
+                    Ops, something went wrong!
+                  </div>
+                  <div *ngIf="accountErr === 'invalid_key'" class="error-badge animated-faster fadeInDown">
+                    <fa-icon [icon]="icons.solid.circleExclamation"></fa-icon>
+                    Invalid key
+                  </div>
+                  <div *ngIf="accountErr === 'key_already_used'" class="error-badge animated-faster fadeInDown">
+                    <fa-icon [icon]="icons.solid.circleExclamation"></fa-icon>
+                    Key already in use!
+                  </div>
+                  <div *ngIf="accountErr === 'contract_error'" class="error-badge animated-faster fadeInDown">
+                    <fa-icon [icon]="icons.solid.circleExclamation"></fa-icon>
+                    {{contractError}}
+                  </div>
+                  <div *ngIf="accountErr === 'cannot_recover_account'" class="error-badge animated-faster fadeInDown">
+                    <fa-icon [icon]="icons.solid.circleExclamation"></fa-icon>
+                    Your account may have been created but an error occurred retrieving it! Please, check
+                    <a [href]="serverApi + 'getAccountsByKey/' + accountForm.get('ownerPublic')?.value"
+                       class="back-btn" target="_blank">here</a>
+                  </div>
+                </ng-container>
+              </div>
+            </form>
+          </div>
+
+          <!--account created with success!-->
+            <div *ngIf="accountSuccess" class="animated-faster fadeInLeft"
+                 fxLayout="column" fxLayoutAlign="space-between stretch" fxLayoutGap="10px" fxFlex="100">
+              <div fxLayout="column" fxLayoutGap="10px">
+                <h1>Account created!</h1>
+                <mat-form-field appearance="outline" class="account-field" fxFlexOffset="30px">
+                  <mat-label>Account</mat-label>
+                  <input matInput placeholder="Account" disabled [value]="createdAccount">
+                  <a matSuffix mat-icon-button matTooltip="copy" matTooltipClass="custom-tooltip"
+                     (click)="cc(createdAccount)">
+                    <fa-icon [icon]="icons.solid.clone"></fa-icon>
+                  </a>
+                </mat-form-field>
+                <div class="text-faded">Please copy your account name above and save it ;)</div>
+              </div>
+              <a class="back-btn" (click)="accBack();">
+                <div fxLayout="row" fxLayoutGap="5px">
+                  <fa-icon [icon]="icons.solid.arrowLeftLong"></fa-icon>
+                  <div>Back</div>
+                </div>
+              </a>
+            </div>
+
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <!--Token Faucet-->
+  <ng-container *ngIf="selectedTab === 1">
+    <div fxFlex="grow" fxLayout="column" fxLayoutAlign="center center">
+      <div class="page-container faucet-page">
+        <div class="custom-card faucet-card animate">
+
+          <!--token Faucet before-->
+          <div *ngIf="!issueTokenSuccess" [ngClass]="{'animated-faster fadeInRight': faucetBack}" fxFlex="100">
+            <form [formGroup]="issueTokenForm">
+              <div fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="10px">
+                <h1>Issue Tokens</h1>
+                <div class="text-faded">Issue tokens to your account in Ultra Testnet</div>
+                <mat-form-field appearance="outline" fxFlexOffset="30px">
+                  <mat-label>To account</mat-label>
+                  <input matInput type="text" placeholder="Account name" formControlName="account">
+                  <mat-hint>This account will be issued 500 UOS</mat-hint>
+                </mat-form-field>
+                <div #captchaRefFaucet fxFlexAlign="start" fxFlexOffset="20px"></div>
+                <button mat-flat-button type="button" fxFlexOffset="10px"
+                        [disabled]="issueTokenForm.invalid || issueTokenSending" (click)="issueTokens()"
+                        class="text-uppercase" color="primary">
+                  <div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="center center">
+                    <div>ISSUE</div>
+                    <mat-spinner color="accent" diameter="17" *ngIf="issueTokenSending"></mat-spinner>
+                  </div>
+                </button>
+                <!--errors-->
+                <div *ngIf="issueTokenForm.get('account')?.hasError('pattern')" class="error-badge animated-faster fadeInDown">
+                  <fa-icon [icon]="icons.solid.circleExclamation"></fa-icon>
+                   Invalid account format!
+                </div>
+                <div *ngIf="recaptchaErr === 'e'" class="error-badge animated-faster fadeInDown">
+                  <fa-icon [icon]="icons.solid.circleExclamation"></fa-icon>
+                  reCAPTCHA connection error
+                </div>
+                <ng-container *ngIf="issueTokenErr !== ''">
+                  <div *ngIf="issueTokenErr === 'e'" class="error-badge animated-faster fadeInDown">
+                    <fa-icon [icon]="icons.solid.circleExclamation"></fa-icon>
+                    Ops, something went wrong!
+                  </div>
+                </ng-container>
+              </div>
+            </form>
+          </div>
+
+          <!--tokens transferred with Success!-->
+            <div *ngIf="issueTokenSuccess" class="animated-faster fadeInLeft"
+                 fxLayout="column" fxLayoutAlign="space-between stretch" fxLayoutGap="10px" fxFlex="100">
+              <div fxLayout="column" fxLayoutGap="10px">
+                <h1>Tokens Issued!</h1>
+                <div class="text-faded">500 UOS were transferred to the account {{issueTokenForm.get('account')?.value}} in the Ultra Testnet</div>
+                <a mat-stroked-button href="" target="_blank" fxFlexOffset="15px" color="primary">
+                  <div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="center center">
+                    <div>See in explorer</div>
+                    <fa-icon [icon]="icons.solid.externalLink"></fa-icon>
+                  </div>
+                </a>
+              </div>
+              <a class="back-btn" (click)="tokenFaucetBack() ">
+                <div fxLayout="row" fxLayoutGap="5px">
+                  <fa-icon [icon]="icons.solid.arrowLeftLong"></fa-icon>
+                  <div>Issue more tokens</div>
+                </div>
+              </a>
+            </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <!--footer socials-->
+  <div>
+    <div class="container-hr footer-socials" fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="end center">
+      <!--Twitter-->
+      <a mat-icon-button href="https://twitter.com/ultra_io" target="_blank" rel="noopener noreferrer">
+        <img src="https://api.website.ultra.io/uploads/bc969cc65de548d9a3dacc0f7ed43086.svg"
+             alt="Ultra (@ultra_io)">
+      </a>
+      <!--Telegram-->
+      <a mat-icon-button href="https://t.me/ultra_io" target="_blank" rel="noopener noreferrer">
+        <img src="https://api.website.ultra.io/uploads/7ed2e63ca9f84edd9e4f340c4656b351.svg" alt="Telegram">
+      </a>
+      <!--Youtube-->
+      <a mat-icon-button href="https://www.youtube.com/c/Ultra_io/" target="_blank" rel="noopener noreferrer">
+        <img src="https://api.website.ultra.io/uploads/4c3d350b3ba04a9a88f16e167e3ce7ba.svg" alt="Youtube"
+             style="width: 17px;max-height: 17px;">
+      </a>
+      <!--Discord-->
+      <a mat-icon-button href="https://discord.com/invite/3gKDrfbzFT" target="_blank" rel="noopener noreferrer">
+        <img src="https://api.website.ultra.io/uploads/discord_0382f8cafb.svg" alt="Discord"
+             style="width: 17px;max-height: 17px;">
+      </a>
+    </div>
+  </div>
+</div>

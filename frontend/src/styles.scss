@@ -1,0 +1,221 @@
+
+:root {
+    /*concepts*/
+  --primary: #896ae2;
+  --accent: #45414A;
+
+  /*buttons*/
+  --btn-primary-color: #ffff;
+  --btn-accent-color: #ffff;
+  --max-container-width: 1352px;
+
+  /*header / toolbar */
+  --toolbar-height: 80px;
+  --toolbar-bg: #25272C;
+  --nav-item: #9A979C;
+  --nav-item-active: #ffff;
+
+  /*main and body*/
+  --main-background: #312C36;
+
+  /*typography*/
+  --main-font-family: 'Inter';
+  --main-font-size: 16px;
+  --text-color: #ffff;
+  --text-faded: #9e9ca3;
+  --text-error: #DC3545;
+
+  /*card*/
+  --card-bg: #3c3846;
+  --text-card-color: var(--text-color);
+  --card-text-faded: var(--text-faded);
+  --card-box-shadow: 0px 0px 30px rgba(0, 76, 127, 0.06);
+  --card-border-radius: 4px;
+
+  /*scrollbar*/
+  --scroll-track-background: var(--main-background);
+  --scroll-background: var(--main-background);
+  --scroll-thumb-background: var(--text-faded);
+
+  /*badges*/
+  --error-badge-bg: #f9dede;
+}
+
+html, body {
+  height: 100%;
+  background-color: var(--main-background) !important;
+}
+body { margin: 0; font-family: var(--main-font-family), sans-serif; color: var(--text-color);}
+
+/*container responsive start*/
+.container-hr {
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.page-container {
+  margin: 0 auto;
+  padding: 16px;
+}
+
+@media (min-width: 1050px) {
+  .container-hr, .page-container, {
+    max-width: var(--max-container-width) !important;
+  }
+}
+/*container responsive end*/
+
+/*scroll bar*/
+::-webkit-scrollbar-track {
+  background-color: var(--scroll-background);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  background-color: var(--scroll-background);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+  background-color: var(--scroll-thumb-background);
+}
+/*scroll bar end*/
+
+/*Appear animation START*/
+.animate {
+  animation: scaleAnimation 1s 1 ease;
+  -webkit-animation: scaleAnimation 1s 1 ease;
+  -moz-animation: scaleAnimation 1s 1 ease;
+  -o-animation: scaleAnimation 1s 1 ease;
+}
+
+@keyframes scaleAnimation {
+  from {
+    visibility: hidden;
+    opacity: 0;
+    transform: rotate(0deg) scale(0.955) skew(0deg) translate(0px);
+  }
+  to {
+    visibility: visible;
+    -webkit-transform: rotate(0deg) scale(1.0) skew(0deg) translate(0px);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes scaleAnimation {
+  from {
+    visibility: hidden;
+    opacity: 0;
+    transform: rotate(0deg) scale(0.955) skew(0deg) translate(0px);
+  }
+  to {
+    visibility: visible;
+    -webkit-transform: rotate(0deg) scale(1.0) skew(0deg) translate(0px);
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes scaleAnimation {
+  from {
+    -moz-transform: rotate(0deg) scale(0.955) skew(0deg) translate(0px);
+    visibility: hidden;
+  }
+  to {
+    -moz-transform: rotate(0deg) scale(1.0) skew(0deg) translate(0px);
+    visibility: visible;
+  }
+}
+
+@-o-keyframes scaleAnimation {
+  from {
+    -o-transform: rotate(0deg) scale(0.955) skew(0deg) translate(0px);
+    visibility: hidden;
+  }
+  to {
+    -o-transform: rotate(0deg) scale(1.0) skew(0deg) translate(0px);
+    visibility: visible;
+  }
+}
+
+/*Appear animation END*/
+
+/*aniamtions START*/
+.animated-faster {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -50%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.fadeInDown {
+  animation-name: fadeInDown;
+  -webkit-animation-name: fadeInDown;
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-9%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.fadeInLeft {
+  animation-name: fadeInLeft;
+  -webkit-animation-name: fadeInLeft;
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(9%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.fadeInRight {
+  animation-name: fadeInRight;
+  -webkit-animation-name: fadeInRight;
+}
+/*aniamtions END*/
+
+/*badges START*/
+.error-badge {
+  color: var(--text-error);
+  margin-top: 16px;
+  background-color: var(--error-badge-bg);
+  font-size: 14px;
+  padding: 4px 16px;
+  border-radius: var(--card-border-radius);
+  font-weight: 600;
+  box-shadow: var(--card-box-shadow);
+}
+/*badges END*/
+
+.text-faded {
+  color: var(--text-faded) !important;
+}
+
+::ng-deep .custom-tooltip {
+  font-size: 16px !important;
+}
+

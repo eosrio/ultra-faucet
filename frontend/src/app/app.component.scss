@@ -1,0 +1,116 @@
+/*TOOLBAR STARTS*/
+.header-toolbar.mat-toolbar {
+  min-height: unset;
+  background-color: transparent;
+}
+
+.header-toolbar .mat-toolbar-row {
+  min-height: var(--toolbar-height) !important;
+  height: auto !important;
+  background-color: var(--toolbar-bg);
+}
+
+.toolbar-container {
+  min-height: var(--toolbar-height);
+}
+
+.logo-container {
+  width: 175px;
+}
+
+.testnet-label {
+  border: 1px solid var(--text-color);
+  border-radius: 4px;
+  padding: 0 6px;
+  font-family: 'Roboto Mono' , monospace;
+  font-size: 13px;
+  line-height: 21px;
+}
+
+//.logo-container {
+//  //margin: 0.75rem 1.2rem;
+//  width: 2rem;
+//  height: 2rem;
+//}
+
+//TABS START
+::ng-deep #menu-tabs .mat-tab-label {
+  color: var(--nav-item-active);
+}
+
+::ng-deep #menu-tabs .mat-tab-label-active {
+  opacity: 1;
+}
+//TABS END
+
+//CARD START
+.custom-card {
+  padding: 28px;
+  background-color: var(--card-bg);
+  min-height: 440px;
+  border-radius: var(--card-border-radius);
+  box-shadow: var(--card-box-shadow);
+  width: auto;
+  min-width: 316px;
+}
+
+.account-card {
+  min-height: 440px;
+}
+
+@media (min-width: 500px) {
+  .custom-card {
+    min-width: 450px;
+    max-width: 450px;
+  }
+}
+
+@media (min-width: 662px) {
+  .account-card {
+    min-width: 630px;
+    max-width: 630px;
+  }
+}
+
+@media (max-width: 661px) {
+  .account-page {
+    width: 100%;
+  }
+}
+
+@media (max-width: 697px) {
+  .toolbar-container {
+    margin-top: 16px;
+  }
+  .tabs-container {
+    margin-top: 10px;
+  }
+}
+
+.footer-socials {
+  margin: 8px 0;
+}
+
+::ng-deep .account-field .mat-form-field-suffix {
+  top: -0.4em !important;
+}
+
+::ng-deep  .custom-tooltip {
+  font-size: 14px;
+}
+
+.account-field .mat-input-element:disabled {
+  color: var(--text-color);
+}
+
+.back-btn {
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 200ms;
+  -webkit-transition: color 200ms;
+}
+
+.back-btn:hover {
+  color: var(--text-faded);
+}
+

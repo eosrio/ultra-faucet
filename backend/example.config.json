@@ -1,0 +1,15 @@
+{
+  "faucetAccount": "FAUCET_ACCOUNT",
+  "faucetKey": "FAUCET_PRIVATE_KEY",
+  "faucetPermission": "FAUCET_PERMISSION_NAME",
+  "faucetManagerContract": "FAUCET_MANAGER",
+  "captchaSecret": "RECAPTCHA_SECRET",
+  "endpoints": [
+    "https://testnet.ultra.eosrio.io",
+    "https://api.testnet.ultra.eossweden.org",
+    "https://ultratest.api.eosnation.io",
+    "https://test.uos.eosusa.news",
+    "https://api.ultra-testnet.cryptolions.io",
+    "https://ultratest-api.eoseoul.io"
+  ]
+}
