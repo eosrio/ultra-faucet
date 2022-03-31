@@ -37,7 +37,6 @@ export class ApiService {
     try {
       return await this.post(`createAccount`, data);
     } catch (e: any) {
-      console.log(e);
       return {
         status: false,
         error: e.message
@@ -49,11 +48,24 @@ export class ApiService {
     try {
       return await this.post(`issueTokens`, data);
     } catch (e: any) {
-      console.log(e);
       return {
         status: false,
-        error: e.message
+        error: e.error.error
       };
+    }
+  }
+
+  async getBalance(_account: any) {
+    try {
+      const result = await this.get('balance/' + _account);
+      if (result.status) {
+        return result.data;
+      } else {
+        return "";
+      }
+    } catch (e) {
+      console.log(e);
+      return "";
     }
   }
 }

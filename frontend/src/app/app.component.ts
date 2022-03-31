@@ -58,6 +58,8 @@ export class AppComponent implements AfterViewInit {
   recaptchaErr = '';
   createdAccount = '';
   contractError = '';
+  issueTransaction = '';
+  updatedBalance = '';
 
   constructor(private fb: FormBuilder, private _snackBar: MatSnackBar,
               public api: ApiService,
@@ -68,7 +70,10 @@ export class AppComponent implements AfterViewInit {
       recaptcha: ['', [Validators.required]]
     });
     this.issueTokenForm = this.fb.group({
-      account: ['', [Validators.required, Validators.pattern('1[a-z]{2}2[a-z]{2}3[a-z]{2}4[a-z]{2}')]],
+      account: ['', [
+        Validators.required,
+        // Validators.pattern('1[a-z]{2}2[a-z]{2}3[a-z]{2}4[a-z]{2}')
+      ]],
       recaptcha: ['', [Validators.required]]
     });
     const savedTab = localStorage.getItem('tab');
@@ -129,6 +134,11 @@ export class AppComponent implements AfterViewInit {
     this.recaptchaErr = '';
   }
 
+  async checkBalance() {
+    const _account = this.issueTokenForm.get('account')?.value;
+    this.updatedBalance = await this.api.getBalance(_account);
+  }
+
 
   async createAcc(): Promise<void> {
     if (this.accountForm.valid) {
@@ -148,6 +158,7 @@ export class AppComponent implements AfterViewInit {
             this.createdAccount = response.data.accounts[0];
             this.accountErr = '';
             this.accountSuccess = true;
+            this.contractError = '';
             if (this.accountSuccess) {
               this.accCreatorBack = false;
             }
@@ -166,15 +177,34 @@ export class AppComponent implements AfterViewInit {
   async issueTokens(): Promise<void> {
     if (this.issueTokenForm.valid) {
       this.issueTokenSending = true;
+      const _account = this.issueTokenForm.get('account')?.value;
       const response = await this.api.issueTokens({
-        account: this.issueTokenForm.get('account')?.value,
+        account: _account,
         captcha: this.googleReCaptchaResponse
       });
       if (response.status) {
-        this.issueTokenSuccess = true;
-        this.faucetBack = false;
+        if (response.data.error) {
+          this.issueTokenErr = 'contract_error';
+          this.contractError = response.data.error;
+          this.issueTokenSuccess = false;
+        } else {
+          if (response.data.transaction_id) {
+            this.issueTransaction = response.data.transaction_id;
+
+            this.updatedBalance = await this.api.getBalance(_account);
+
+            this.issueTokenErr = '';
+            this.contractError = '';
+            this.issueTokenSuccess = true;
+            if (this.issueTokenSuccess) {
+              this.faucetBack = false;
+            }
+          } else {
+            this.issueTokenErr = 'e';
+          }
+        }
       } else {
-        this.issueTokenErr = 'e';
+        this.issueTokenErr = response.error;
         this.issueTokenSuccess = false;
       }
     }
@@ -200,7 +230,6 @@ export class AppComponent implements AfterViewInit {
 
   renderCaptchaWithDelay(elementName: string, time: number) {
     const element: ElementRef<HTMLElement> = (this as any)[elementName];
-    console.log(element);
     setTimeout(() => {
       if (element && element.nativeElement) {
         this.renderCaptcha(element.nativeElement);
@@ -222,6 +251,7 @@ export class AppComponent implements AfterViewInit {
   accBack() {
     this.accountSuccess = false;
     this.accCreatorBack = true;
+    this.contractError = '';
     this.accountForm.reset();
     this.renderCaptchaWithDelay('captchaRef2', 100);
   }
@@ -229,12 +259,14 @@ export class AppComponent implements AfterViewInit {
   tokenFaucetBack() {
     this.issueTokenSuccess = false;
     this.faucetBack = true;
+    this.issueTokenErr = '';
+    this.contractError = '';
+    this.updatedBalance = '';
     this.issueTokenForm.reset();
     this.renderCaptchaWithDelay('captchaRefFaucet', 100);
   }
 
   async checkKey(key: any): Promise<void> {
-    console.log(key);
     if (key.valid) {
       const response = await this.api.checkKey(key.value);
       if (response.status) {

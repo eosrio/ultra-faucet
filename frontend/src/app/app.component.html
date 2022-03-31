@@ -60,27 +60,30 @@
           <!--create account-->
           <div *ngIf="!accountSuccess" [ngClass]="{'animated-faster fadeInRight': accCreatorBack}" fxFlex="100">
             <form [formGroup]="accountForm">
-              <div  fxLayout="column" fxLayoutAlign="start stretch" fxFlex="100">
+              <div fxLayout="column" fxLayoutAlign="start stretch" fxFlex="100">
                 <h1>Create Account</h1>
                 <div class="text-faded" fxFlexOffset="10px">Create your account in Ultra Testnet!</div>
                 <div class="text-faded" fxFlexOffset="-5px">Paste your public key below</div>
                 <mat-form-field appearance="outline" fxFlexOffset="25px">
                   <mat-label>Owner Public Key</mat-label>
-                  <input matInput type="text" placeholder="Owner Public Key" formControlName="ownerPublic" (blur)="checkKey(accountForm.get('ownerPublic'))">
+                  <input matInput type="text" placeholder="Owner Public Key" formControlName="ownerPublic"
+                         (blur)="checkKey(accountForm.get('ownerPublic'))">
                 </mat-form-field>
                 <mat-form-field appearance="outline" fxFlexOffset="-5px">
                   <mat-label>Active Public Key (optional)</mat-label>
-                  <input matInput type="text" placeholder="Active Public Key" formControlName="activePublic" (blur)="checkKey(accountForm.get('activePublic'))">
+                  <input matInput type="text" placeholder="Active Public Key" formControlName="activePublic"
+                         (blur)="checkKey(accountForm.get('activePublic'))">
                   <mat-hint class="text-faded">If you don't fill in your active public key, your owner and active keys
                     will be the same
                   </mat-hint>
                 </mat-form-field>
 
 
-                <div fxLayout.gt-xs="row" fxLayoutGap.gt-xs="30px" fxLayoutAlign.gt-xs="space-between end" fxFlexOffset="30px"
+                <div fxLayout.gt-xs="row" fxLayoutGap.gt-xs="30px" fxLayoutAlign.gt-xs="space-between end"
+                     fxFlexOffset="30px"
                      fxLayout.lt-sm="column" fxLayoutGap.lt-sm="10px">
                   <!--RECAPTCHA-->
-                  <div #captchaRef2 fxFlexAlign="start" ></div>
+                  <div #captchaRef2 fxFlexAlign="start"></div>
                   <button mat-flat-button type="button" fxFlexOffset="10px" fxFlex="grow"
                           [disabled]="accountForm.invalid || accountSending" (click)="createAcc()"
                           class="text-uppercase" color="primary">
@@ -124,27 +127,27 @@
           </div>
 
           <!--account created with success!-->
-            <div *ngIf="accountSuccess" class="animated-faster fadeInLeft"
-                 fxLayout="column" fxLayoutAlign="space-between stretch" fxLayoutGap="10px" fxFlex="100">
-              <div fxLayout="column" fxLayoutGap="10px">
-                <h1>Account created!</h1>
-                <mat-form-field appearance="outline" class="account-field" fxFlexOffset="30px">
-                  <mat-label>Account</mat-label>
-                  <input matInput placeholder="Account" disabled [value]="createdAccount">
-                  <a matSuffix mat-icon-button matTooltip="copy" matTooltipClass="custom-tooltip"
-                     (click)="cc(createdAccount)">
-                    <fa-icon [icon]="icons.solid.clone"></fa-icon>
-                  </a>
-                </mat-form-field>
-                <div class="text-faded">Please copy your account name above and save it ;)</div>
-              </div>
-              <a class="back-btn" (click)="accBack();">
-                <div fxLayout="row" fxLayoutGap="5px">
-                  <fa-icon [icon]="icons.solid.arrowLeftLong"></fa-icon>
-                  <div>Back</div>
-                </div>
-              </a>
+          <div *ngIf="accountSuccess" class="animated-faster fadeInLeft"
+               fxLayout="column" fxLayoutAlign="space-between stretch" fxLayoutGap="10px" fxFlex="100">
+            <div fxLayout="column" fxLayoutGap="10px">
+              <h1>Account created!</h1>
+              <mat-form-field appearance="outline" class="account-field" fxFlexOffset="30px">
+                <mat-label>Account</mat-label>
+                <input matInput placeholder="Account" disabled [value]="createdAccount">
+                <a matSuffix mat-icon-button matTooltip="copy" matTooltipClass="custom-tooltip"
+                   (click)="cc(createdAccount)">
+                  <fa-icon [icon]="icons.solid.clone"></fa-icon>
+                </a>
+              </mat-form-field>
+              <div class="text-faded">Please copy your account name above and save it ;)</div>
             </div>
+            <a class="back-btn" (click)="accBack();">
+              <div fxLayout="row" fxLayoutGap="5px">
+                <fa-icon [icon]="icons.solid.arrowLeftLong"></fa-icon>
+                <div>Back</div>
+              </div>
+            </a>
+          </div>
 
         </div>
       </div>
@@ -165,9 +168,11 @@
                 <div class="text-faded">Issue tokens to your account in Ultra Testnet</div>
                 <mat-form-field appearance="outline" fxFlexOffset="30px">
                   <mat-label>To account</mat-label>
-                  <input matInput type="text" placeholder="Account name" formControlName="account">
+                  <input matInput type="text" placeholder="Account name" formControlName="account"
+                         (blur)="checkBalance()">
                   <mat-hint>This account will be issued 500 UOS</mat-hint>
                 </mat-form-field>
+                <div class="text-faded" *ngIf="updatedBalance">Current Balance: {{updatedBalance}}</div>
                 <div #captchaRefFaucet fxFlexAlign="start" fxFlexOffset="20px"></div>
                 <button mat-flat-button type="button" fxFlexOffset="10px"
                         [disabled]="issueTokenForm.invalid || issueTokenSending" (click)="issueTokens()"
@@ -178,15 +183,24 @@
                   </div>
                 </button>
                 <!--errors-->
-                <div *ngIf="issueTokenForm.get('account')?.hasError('pattern')" class="error-badge animated-faster fadeInDown">
+                <div *ngIf="issueTokenForm.get('account')?.hasError('pattern')"
+                     class="error-badge animated-faster fadeInDown">
                   <fa-icon [icon]="icons.solid.circleExclamation"></fa-icon>
-                   Invalid account format!
+                  Invalid account format!
                 </div>
                 <div *ngIf="recaptchaErr === 'e'" class="error-badge animated-faster fadeInDown">
                   <fa-icon [icon]="icons.solid.circleExclamation"></fa-icon>
                   reCAPTCHA connection error
                 </div>
                 <ng-container *ngIf="issueTokenErr !== ''">
+                  <div *ngIf="issueTokenErr === 'COOLDOWN_ACTIVE'" class="error-badge animated-faster fadeInDown">
+                    <fa-icon [icon]="icons.solid.circleExclamation"></fa-icon>
+                    This account is in cooldown, please wait to issue more.
+                  </div>
+                  <div *ngIf="issueTokenErr === 'ACCOUNT_NOT_FOUND'" class="error-badge animated-faster fadeInDown">
+                    <fa-icon [icon]="icons.solid.circleExclamation"></fa-icon>
+                    Account not found!
+                  </div>
                   <div *ngIf="issueTokenErr === 'e'" class="error-badge animated-faster fadeInDown">
                     <fa-icon [icon]="icons.solid.circleExclamation"></fa-icon>
                     Ops, something went wrong!
@@ -197,25 +211,29 @@
           </div>
 
           <!--tokens transferred with Success!-->
-            <div *ngIf="issueTokenSuccess" class="animated-faster fadeInLeft"
-                 fxLayout="column" fxLayoutAlign="space-between stretch" fxLayoutGap="10px" fxFlex="100">
-              <div fxLayout="column" fxLayoutGap="10px">
-                <h1>Tokens Issued!</h1>
-                <div class="text-faded">500 UOS were transferred to the account {{issueTokenForm.get('account')?.value}} in the Ultra Testnet</div>
-                <a mat-stroked-button href="" target="_blank" fxFlexOffset="15px" color="primary">
-                  <div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="center center">
-                    <div>See in explorer</div>
-                    <fa-icon [icon]="icons.solid.externalLink"></fa-icon>
-                  </div>
-                </a>
+          <div *ngIf="issueTokenSuccess" class="animated-faster fadeInLeft"
+               fxLayout="column" fxLayoutAlign="space-between stretch" fxLayoutGap="10px" fxFlex="100">
+            <div fxLayout="column" fxLayoutGap="10px">
+              <h1>Tokens Issued!</h1>
+              <div class="text-faded">500 UOS were transferred to the account {{issueTokenForm.get('account')?.value}}
+                in the Ultra Testnet
               </div>
-              <a class="back-btn" (click)="tokenFaucetBack() ">
-                <div fxLayout="row" fxLayoutGap="5px">
-                  <fa-icon [icon]="icons.solid.arrowLeftLong"></fa-icon>
-                  <div>Issue more tokens</div>
+              <div class="text-faded">Your balance is now: {{updatedBalance}}</div>
+              <a mat-stroked-button [href]="'https://explorer.testnet.ultra.io/tx/' + issueTransaction" target="_blank"
+                 fxFlexOffset="15px" color="primary">
+                <div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="center center">
+                  <div>See in explorer</div>
+                  <fa-icon [icon]="icons.solid.externalLink"></fa-icon>
                 </div>
               </a>
             </div>
+            <a class="back-btn" (click)="tokenFaucetBack() ">
+              <div fxLayout="row" fxLayoutGap="5px">
+                <fa-icon [icon]="icons.solid.arrowLeftLong"></fa-icon>
+                <div>Issue more tokens</div>
+              </div>
+            </a>
+          </div>
         </div>
       </div>
     </div>

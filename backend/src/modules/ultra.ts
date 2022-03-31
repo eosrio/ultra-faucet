@@ -227,7 +227,7 @@ export class UltraBlockchain {
         }
     }
 
-    async issueTokens(accountName: string) {
+    async issueTokens(accountName: string): Promise<any> {
         if (accountName) {
             const results = this.transact([
                 {
@@ -242,8 +242,11 @@ export class UltraBlockchain {
                         to: accountName
                     }
                 }
-            ], false);
+            ], true);
             console.log(results);
+            return results;
+        } else {
+            return null;
         }
     }
 }

@@ -5,4 +5,5 @@ interface GlobalConfig {
     faucetManagerContract: string;
     endpoints: string[];
     captchaSecret: string;
+    issueCooldown: number;
 }

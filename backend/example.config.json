@@ -4,6 +4,7 @@
   "faucetPermission": "FAUCET_PERMISSION_NAME",
   "faucetManagerContract": "FAUCET_MANAGER",
   "captchaSecret": "RECAPTCHA_SECRET",
+  "issueCooldown": 120,
   "endpoints": [
     "https://testnet.ultra.eosrio.io",
     "https://api.testnet.ultra.eossweden.org",

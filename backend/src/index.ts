@@ -22,25 +22,9 @@ const ultra = new UltraBlockchain(config);
 
 await ultra.init();
 
-// await ultra.newNonEbaAccount(
-//     "EOS5quAWMKHJaBjJDgW79fCygBoo8aSRY4HyzJUPc5BsfbMmEaCdU",
-//     "EOS5quAWMKHJaBjJDgW79fCygBoo8aSRY4HyzJUPc5BsfbMmEaCdU",
-//     "10.00000000 UOS",
-//     false
-// );
-
-// try {
-//     for (let i = 0; i < 5; i++) {
-//         const randomAccount = generateUltraAccountName();
-//         console.log(i, randomAccount);
-//     }
-// } catch (e) {
-//     console.log(e);
-// }
-
 const server = new ApiServer(config);
 server.decorate('ultra', ultra);
-const faucet = new FaucetService(server, ultra);
+const faucet = new FaucetService(server, ultra, config);
 await faucet.start();
 
 const acs = new AccountCreationService(server, ultra);

@@ -16,6 +16,7 @@ export class ApiServer {
 
         this.fastify.register(fastifyCors,{
             origin: [
+                'http://localhost:4200',
                 'testnet.ultra.eosrio.io'
             ]
         });
