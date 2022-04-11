@@ -135,7 +135,7 @@ export class AppComponent implements AfterViewInit {
   }
 
   async checkBalance() {
-    const _account = this.issueTokenForm.get('account')?.value;
+    const _account = this.issueTokenForm.get('account')?.value.trim();
     this.updatedBalance = await this.api.getBalance(_account);
   }
 
@@ -177,7 +177,7 @@ export class AppComponent implements AfterViewInit {
   async issueTokens(): Promise<void> {
     if (this.issueTokenForm.valid) {
       this.issueTokenSending = true;
-      const _account = this.issueTokenForm.get('account')?.value;
+      const _account = this.issueTokenForm.get('account')?.value.trim();
       const response = await this.api.issueTokens({
         account: _account,
         captcha: this.googleReCaptchaResponse
