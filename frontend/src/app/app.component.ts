@@ -144,8 +144,8 @@ export class AppComponent implements AfterViewInit {
     if (this.accountForm.valid) {
       this.accountSending = true;
       const response = await this.api.createAccount({
-        ownerKey: this.accountForm.get('ownerPublic')?.value,
-        activeKey: this.accountForm.get('activePublic')?.value,
+        ownerKey: this.accountForm.get('ownerPublic')?.value.trim(),
+        activeKey: this.accountForm.get('activePublic')?.value.trim(),
         captcha: this.googleReCaptchaResponse
       });
       if (response.status) {
@@ -268,7 +268,7 @@ export class AppComponent implements AfterViewInit {
 
   async checkKey(key: any): Promise<void> {
     if (key.valid) {
-      const response = await this.api.checkKey(key.value);
+      const response = await this.api.checkKey(key.value.trim());
       if (response.status) {
         if (response.data.length > 0) {
           this.accountErr = 'key_already_used';
