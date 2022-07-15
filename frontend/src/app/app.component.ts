@@ -1,5 +1,5 @@
 import {AfterViewInit, ChangeDetectorRef, Component, ElementRef, ViewChild} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from "@angular/forms";
 import {faRotateRight} from "@fortawesome/free-solid-svg-icons/faRotateRight";
 import {faCircleExclamation} from "@fortawesome/free-solid-svg-icons/faCircleExclamation";
 import {faClone} from "@fortawesome/free-solid-svg-icons/faClone";
@@ -15,8 +15,8 @@ import {environment} from "../environments/environment";
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements AfterViewInit {
-  public accountForm: FormGroup;
-  public issueTokenForm: FormGroup;
+  public accountForm: UntypedFormGroup;
+  public issueTokenForm: UntypedFormGroup;
   accountSuccess: boolean = false;
   issueTokenSuccess: boolean = false;
   accountErr = '';
@@ -61,7 +61,7 @@ export class AppComponent implements AfterViewInit {
   issueTransaction = '';
   updatedBalance = '';
 
-  constructor(private fb: FormBuilder, private _snackBar: MatSnackBar,
+  constructor(private fb: UntypedFormBuilder, private _snackBar: MatSnackBar,
               public api: ApiService,
               private cdr: ChangeDetectorRef) {
     this.accountForm = this.fb.group({
